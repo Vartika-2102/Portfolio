@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 const marqueeItems = [
@@ -12,6 +13,62 @@ const marqueeItems = [
   "OpenCV",
   "Python",
 ];
+
+const phrases = [
+  "builds React apps",
+  "designs REST APIs",
+  "ships AI powered features",
+  "deploys to Vercel and Render",
+];
+
+const stats = [
+  ["4+", "projects built"],
+  ["1", "internship"],
+  ["10+", "technologies"],
+];
+
+function Typed() {
+  const [text, setText] = useState(phrases[0]);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let phrase = 0;
+    let letters = phrases[0].length;
+    let deleting = true;
+    let timer;
+
+    const tick = () => {
+      const current = phrases[phrase];
+      letters += deleting ? -1 : 1;
+      setText(current.slice(0, letters));
+
+      let delay = deleting ? 35 : 70;
+      if (!deleting && letters === current.length) {
+        deleting = true;
+        delay = 1600;
+      } else if (deleting && letters === 0) {
+        deleting = false;
+        phrase = (phrase + 1) % phrases.length;
+        delay = 350;
+      }
+      timer = setTimeout(tick, delay);
+    };
+
+    timer = setTimeout(tick, 1600);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <p className="typed" aria-label="builds React apps, designs REST APIs, ships AI powered features">
+      <span aria-hidden="true">
+        <span className="mono">&gt; </span>
+        {text}
+        <span className="caret" />
+      </span>
+    </p>
+  );
+}
 
 function Hero() {
   const loop = [...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems];
@@ -36,6 +93,8 @@ function Hero() {
             <b>Full Stack Developer</b> | AI Enthusiast
           </p>
 
+          <Typed />
+
           <p className="lede">
             I build responsive, scalable web apps with React.js, Node.js,
             Express.js and MySQL. I also explore AI and machine learning to
@@ -52,6 +111,15 @@ function Hero() {
             <a href="/resume.pdf" download className="btn">
               Download resume
             </a>
+          </div>
+
+          <div className="stats">
+            {stats.map(([n, label]) => (
+              <div key={label}>
+                <strong>{n}</strong>
+                <span>{label}</span>
+              </div>
+            ))}
           </div>
 
           <div className="socials">

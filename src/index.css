@@ -232,3 +232,13 @@ a.crow:hover .val { color: var(--accent); }
   .track { flex-wrap: wrap; width: auto; }
   html { scroll-behavior: auto; }
 }
+
+/* ---------- Typing effect and stats ---------- */
+.typed { font-family: var(--font-mono); color: var(--fg); margin-top: 18px; min-height: 1.7em; }
+.typed .mono { color: var(--accent); }
+.caret { display: inline-block; width: 8px; height: 1.1em; background: var(--accent); margin-left: 3px; vertical-align: -0.18em; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.stats { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); max-width: 480px; }
+.stats strong { display: block; font-family: var(--font-display); font-size: 1.9rem; line-height: 1; color: var(--fg); }
+.stats span { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+@media (prefers-reduced-motion: reduce) { .caret { animation: none; } }
