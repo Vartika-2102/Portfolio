@@ -22,23 +22,17 @@ function Contact() {
       label: "Email",
       value: "vartika381@gmail.com",
       href: "mailto:vartika381@gmail.com",
-      bg: "bg-blue-100 dark:bg-blue-900/40",
-      color: "text-blue-600 dark:text-blue-400",
     },
     {
       icon: <FaPhone />,
       label: "Phone",
       value: "+91 8187937026",
       href: "tel:+918187937026",
-      bg: "bg-green-100 dark:bg-green-900/40",
-      color: "text-green-600 dark:text-green-400",
     },
     {
       icon: <FaMapMarkerAlt />,
       label: "Open to Work",
       value: "Noida • Gurugram • Remote",
-      bg: "bg-orange-100 dark:bg-orange-900/40",
-      color: "text-orange-600 dark:text-orange-400",
     },
     {
       icon: <FaLinkedin />,
@@ -46,8 +40,6 @@ function Contact() {
       value: "linkedin.com/in/vartika-singh-02b515257",
       href: "https://www.linkedin.com/in/vartika-singh-02b515257",
       external: true,
-      bg: "bg-purple-100 dark:bg-purple-900/40",
-      color: "text-purple-600 dark:text-purple-400",
     },
     {
       icon: <FaGithub />,
@@ -55,8 +47,6 @@ function Contact() {
       value: "github.com/Vartika-2102",
       href: "https://github.com/Vartika-2102",
       external: true,
-      bg: "bg-gray-200 dark:bg-gray-700",
-      color: "text-gray-700 dark:text-gray-300",
     },
   ];
 
@@ -89,101 +79,67 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-gray-50 dark:bg-gray-950 py-24 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="contact" className="sec">
+      <div className="wrap">
+        <p className="eyebrow">Contact</p>
+        <h2 className="sec-title">Let's build something that works.</h2>
+        <p className="sec-sub">
+          Have a project, internship, or job opportunity? Send a short
+          message and I'll get back to you.
+        </p>
 
-        {/* Heading */}
-        <div data-aos="fade-up">
-          <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-white">
-            Contact Me
-          </h2>
+        <div className="contact-grid">
+          {/* Left side */}
+          <div className="panel">
+            <h3 style={{ fontSize: "1.5rem" }}>Vartika Singh</h3>
+            <p className="sec-sub" style={{ marginTop: 4, marginBottom: 14 }}>
+              Full Stack Developer
+            </p>
 
-          <p className="text-center text-gray-500 dark:text-gray-400 mt-3 mb-14 max-w-3xl mx-auto">
-            Have a project, internship, or job opportunity? Feel free to connect with me.
-          </p>
-        </div>
+            {contactDetails.map((item) => {
+              const content = (
+                <>
+                  <span className="ico">{item.icon}</span>
+                  <span>
+                    <span className="lab">{item.label}</span>
+                    <br />
+                    <span className="val">{item.value}</span>
+                  </span>
+                </>
+              );
 
-        <div className="grid lg:grid-cols-2 gap-10">
-
-          {/* Left Side */}
-          <div
-            data-aos="fade-right"
-            className="bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 p-8 hover:shadow-xl hover:border-blue-500 transition-all duration-300"
-          >
-            {/* Name + Designation */}
-            <div className="mb-8 pb-6 border-b border-gray-100 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Vartika Singh
-              </h3>
-              <p className="text-blue-600 dark:text-blue-400 font-medium mt-1">
-                Full Stack Developer
-              </p>
-            </div>
-
-            <h4 className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-8">
-              Get In Touch
-            </h4>
-
-            <div className="space-y-6">
-              {contactDetails.map((item, i) => {
-                const content = (
-                  <>
-                    <div
-                      className={`w-12 h-12 flex-shrink-0 rounded-full flex items-center justify-center text-xl transition-transform duration-300 group-hover:scale-110 ${item.bg} ${item.color}`}
-                    >
-                      {item.icon}
-                    </div>
-
-                    <div>
-                      <p className="font-semibold text-gray-800 dark:text-gray-200">
-                        {item.label}
-                      </p>
-                      <p className="text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
-                        {item.value}
-                      </p>
-                    </div>
-                  </>
-                );
-
-                return item.href ? (
-                    <a
-                    key={i}
-                    href={item.href}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noreferrer" : undefined}
-                    className="flex items-center gap-4 group cursor-pointer"
-                  >
-                    {content}
-                  </a>
-                ) : (
-                  <div key={i} className="flex items-center gap-4 group">
-                    {content}
-                  </div>
-                );
-              })}
-            </div>
-
+              return item.href ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noreferrer" : undefined}
+                  className="crow"
+                >
+                  {content}
+                </a>
+              ) : (
+                <div key={item.label} className="crow">
+                  {content}
+                </div>
+              );
+            })}
           </div>
 
-          {/* Right Side */}
-          <div
-            data-aos="fade-left"
-            className="bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 p-8 hover:shadow-xl hover:border-blue-500 transition-all duration-300"
-          >
-            <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-8">
-              Send a Message
-            </h3>
+          {/* Right side */}
+          <div className="panel">
+            <h3 style={{ fontSize: "1.5rem", marginBottom: 18 }}>Send a message</h3>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
-
+            <form onSubmit={handleSubmit} className="form">
               <input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="Your Name"
+                placeholder="Your name"
+                aria-label="Your name"
                 required
-                className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg px-4 py-3 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 transition placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                className="field"
               />
 
               <input
@@ -191,9 +147,10 @@ function Contact() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Your Email"
+                placeholder="Your email"
+                aria-label="Your email"
                 required
-                className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg px-4 py-3 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 transition placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                className="field"
               />
 
               <textarea
@@ -202,36 +159,33 @@ function Contact() {
                 onChange={handleChange}
                 rows="6"
                 placeholder="Write your message..."
+                aria-label="Your message"
                 required
-                className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg px-4 py-3 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 transition placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                className="field"
               ></textarea>
 
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full bg-blue-600 hover:bg-blue-700 hover:scale-[1.02] text-white py-3 rounded-lg font-semibold transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
+                className="btn btn-primary"
               >
-                {status === "sending" ? "Sending..." : "Send Message"}
+                {status === "sending" ? "Sending..." : "Send message"}
               </button>
 
               {status === "success" && (
-                <p className="text-green-600 dark:text-green-400 text-center font-medium">
-                  ✅ Message sent successfully! I'll get back to you soon.
+                <p className="msg-ok">
+                  Message sent. I'll get back to you soon.
                 </p>
               )}
 
               {status === "error" && (
-                <p className="text-red-600 dark:text-red-400 text-center font-medium">
-                  ❌ Something went wrong. Please try again or email me directly.
+                <p className="msg-err">
+                  Something went wrong. Please try again or email me directly.
                 </p>
               )}
-
             </form>
-
           </div>
-
         </div>
-
       </div>
     </section>
   );

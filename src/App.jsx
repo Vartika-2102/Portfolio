@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 import ScrollProgress from "./Components/ScrollProgress";
 import ScrollToTop from "./Components/ScrollToTop";
@@ -20,15 +18,6 @@ function App() {
     if (saved) return saved === "dark";
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
-
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      offset: 100,
-      easing: "ease-in-out",
-    });
-  }, []);
 
   useEffect(() => {
     if (darkMode) {

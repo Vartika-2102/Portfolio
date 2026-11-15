@@ -1,51 +1,37 @@
-import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-10 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        <h3 className="text-xl font-bold text-white">Vartika Singh</h3>
-        <p className="text-gray-400 mt-1">Full Stack Developer</p>
+    <footer className="foot">
+      <div className="wrap foot-inner">
+        <span>
+          © {new Date().getFullYear()} <strong>Vartika Singh</strong>
+        </span>
 
-        {/* Social Links */}
-        <div className="flex justify-center gap-6 mt-6">
-            <a
+        <span>Built with React and Tailwind CSS</span>
+
+        <div className="foot-links">
+          <a
             href="https://github.com/Vartika-2102"
             target="_blank"
             rel="noreferrer"
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300"
             aria-label="GitHub"
+            className="icon-btn"
           >
-            <FaGithub size={22} />
+            <FaGithub size={16} />
           </a>
-
-            <a
+          <a
             href="https://www.linkedin.com/in/vartika-singh-02b515257"
             target="_blank"
             rel="noreferrer"
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300"
             aria-label="LinkedIn"
+            className="icon-btn"
           >
-            <FaLinkedin size={22} />
+            <FaLinkedin size={16} />
           </a>
-
-            <a
-            href="mailto:vartika381@gmail.com"
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300"
-            aria-label="Email"
-          >
-            <FaEnvelope size={22} />
+          <a href="mailto:vartika381@gmail.com" aria-label="Email" className="icon-btn">
+            <FaEnvelope size={16} />
           </a>
-        </div>
-
-        {/* Divider */}
-        <div className="border-t border-gray-700 mt-8 pt-6">
-          <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} Vartika Singh. All rights reserved.
-          </p>
-          <p className="text-sm text-gray-500 mt-1 flex items-center justify-center gap-1">
-            Built with React <FaHeart className="text-red-500" size={12} /> Tailwind CSS
-          </p>
         </div>
       </div>
     </footer>

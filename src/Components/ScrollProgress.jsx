@@ -23,7 +23,7 @@ function ScrollProgress() {
 
   return (
     <div
-      className="fixed top-0 left-0 h-1 bg-blue-600 z-[9999] transition-all duration-150"
+      className="fixed top-0 left-0 h-1 bg-[var(--accent)] z-[9999] transition-all duration-150"
       style={{ width: `${scroll}%` }}
     />
   );
