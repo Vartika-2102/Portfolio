@@ -70,6 +70,26 @@ function Typed() {
   );
 }
 
+function Avatar() {
+  return (
+    <div className="avatar" aria-hidden="true">
+      <div className="avatar-ring" />
+      <div className="avatar-orbit">
+        <span className="o1">&lt;/&gt;</span>
+        <span className="o2">{"{ }"}</span>
+        <span className="o3">=&gt;</span>
+      </div>
+      <div className="avatar-core">
+        <span className="avatar-tag">&lt;dev /&gt;</span>
+        <span className="avatar-letters">
+          V<b>S</b>
+        </span>
+        <span className="avatar-line">full stack</span>
+      </div>
+    </div>
+  );
+}
+
 function Hero() {
   const loop = [...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems];
 
@@ -77,10 +97,7 @@ function Hero() {
     <>
       <section id="home">
         <div className="wrap hero">
-          <span className="float f1" aria-hidden="true">&lt;/&gt;</span>
-          <span className="float f2" aria-hidden="true">{"{ }"}</span>
-          <span className="float f3" aria-hidden="true">=&gt;</span>
-          <span className="float f4" aria-hidden="true">( )</span>
+          <Avatar />
 
           <span className="status">
             <i />
