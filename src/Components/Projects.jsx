@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import {
   FaGithub,
+  FaLock,
   FaExternalLinkAlt,
   FaTimes,
   FaChevronLeft,
@@ -23,6 +24,9 @@ import jobRecruiter from "../assets/Projects/jobportal-recruiter.png";
 import gpsMap from "../assets/Projects/gps-map.png";
 
 import vehicleDetection from "../assets/Projects/vehicle-detection.png";
+
+// Live link of the Law Setu project. Leave empty ("") to hide the button.
+const LAW_SETU_LIVE_URL = "https://law-setu-sigma.vercel.app/";
 
 function ProjectImage({ src, alt, onClick }) {
   const [loaded, setLoaded] = useState(false);
@@ -52,6 +56,25 @@ function Projects() {
   const [activeFilter, setActiveFilter] = useState("All");
 
   const projects = [
+    {
+      title: "Law Setu",
+      category: "Web Dev",
+      images: [],
+      imageAlts: [],
+      description:
+        "A legal services platform that connects clients with verified advocates. It has separate dashboards for admins, advocates and clients, smart lawyer matching from plain language search, advocate online status and State to District filters across India.",
+      tech: [
+        "React.js",
+        "Vite",
+        "Node.js",
+        "Express.js",
+        "MySQL",
+        "Vercel",
+        "Render",
+      ],
+      github: "",
+      live: LAW_SETU_LIVE_URL,
+    },
     {
       title: "AgroSmart",
       category: "Web Dev",
@@ -198,36 +221,46 @@ function Projects() {
           {filteredProjects.map((project) => (
             <div key={project.title} className="proj">
               {/* Image Section */}
-              <div className="h-60 overflow-hidden group">
-                {project.images.length > 1 ? (
-                  <Swiper
-                    modules={[Autoplay, Pagination]}
-                    autoplay={{
-                      delay: 2500,
-                      disableOnInteraction: false,
-                    }}
-                    pagination={{ clickable: true }}
-                    loop={true}
-                    className="h-full project-swiper"
-                  >
-                    {project.images.map((img, i) => (
-                      <SwiperSlide key={i}>
-                        <ProjectImage
-                          src={img}
-                          alt={project.imageAlts[i]}
-                          onClick={() => openLightbox(project.images, i)}
-                        />
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                ) : (
-                  <ProjectImage
-                    src={project.images[0]}
-                    alt={project.imageAlts[0]}
-                    onClick={() => openLightbox(project.images, 0)}
-                  />
-                )}
-              </div>
+              {project.images.length === 0 ? (
+                <div className="cover" aria-hidden="true">
+                  <span className="cover-tag">&lt;legal-tech /&gt;</span>
+                  <span className="cover-title">{project.title}</span>
+                  <span className="cover-sub">
+                    Admin · Advocate · Client dashboards
+                  </span>
+                </div>
+              ) : (
+                <div className="h-60 overflow-hidden group">
+                  {project.images.length > 1 ? (
+                    <Swiper
+                      modules={[Autoplay, Pagination]}
+                      autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                      }}
+                      pagination={{ clickable: true }}
+                      loop={true}
+                      className="h-full project-swiper"
+                    >
+                      {project.images.map((img, i) => (
+                        <SwiperSlide key={i}>
+                          <ProjectImage
+                            src={img}
+                            alt={project.imageAlts[i]}
+                            onClick={() => openLightbox(project.images, i)}
+                          />
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  ) : (
+                    <ProjectImage
+                      src={project.images[0]}
+                      alt={project.imageAlts[0]}
+                      onClick={() => openLightbox(project.images, 0)}
+                    />
+                  )}
+                </div>
+              )}
 
               <div className="proj-body">
                 <div className="proj-head">
@@ -246,15 +279,22 @@ function Projects() {
                 </div>
 
                 <div className="proj-links">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn"
-                  >
-                    <FaGithub />
-                    GitHub
-                  </a>
+                  {project.github ? (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn"
+                    >
+                      <FaGithub />
+                      GitHub
+                    </a>
+                  ) : (
+                    <span className="btn btn-note">
+                      <FaLock size={12} />
+                      Private repo
+                    </span>
+                  )}
 
                   {project.live && (
                     <a

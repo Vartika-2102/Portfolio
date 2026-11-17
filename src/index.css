@@ -255,3 +255,11 @@ a.crow:hover .val { color: var(--accent); }
 .avatar-orbit .o1 { top: 2%; left: 42%; } .avatar-orbit .o2 { bottom: 14%; left: -2%; } .avatar-orbit .o3 { bottom: 18%; right: -2%; }
 @keyframes spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .avatar-ring, .avatar-orbit { animation: none; } }
+
+/* ---------- Client project cover ---------- */
+.cover { height: 240px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; padding: 20px; background: radial-gradient(circle at 20% 20%, var(--accent-soft), transparent 60%), var(--bg); border-bottom: 1px solid var(--line); }
+.cover-tag { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); }
+.cover-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.2rem, 6vw, 3rem); letter-spacing: -0.03em; color: var(--fg); line-height: 1; }
+.cover-sub { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+.btn-note { cursor: default; color: var(--muted); background: transparent; border-style: dashed; }
+.btn-note:hover { border-color: var(--line); transform: none; }
